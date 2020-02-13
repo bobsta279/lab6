@@ -25,6 +25,18 @@ function addProjectDetails(e) {
 	var projectID = $(this).closest('.project').attr('id');
 	// get rid of 'project' from the front of the id 'project3'
 	var idNumber = projectID.substr('project'.length);
-
+	var result = 
+	$.get("/project/" + idNumber, callBackFn("/project/" + idNumber, idNumber));
+	
 	console.log("User clicked on project " + idNumber);
+}
+
+function callBackFn(result, idNumber){
+	// Print out the url to get
+	console.log("Calling URL " + result);
+
+	// Use JQuery to select the div
+	// where we'll be inserting the content
+	$("#" + idNumber + " .details").html("yote boat");
+	console.log("Attempted to change project " + idNumber);
 }
